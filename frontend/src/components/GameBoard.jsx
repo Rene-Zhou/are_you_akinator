@@ -50,7 +50,13 @@ const GameBoard = () => {
     if (gameState.status === 'idle') {
       return (
         <div className="text-center">
-          <div className="text-6xl mb-6">🎭</div>
+          <div className="mb-6 flex justify-center">
+            <img 
+              src="/img/akinaotr-t.png" 
+              alt="Akinator" 
+              className="w-24 h-24 object-contain"
+            />
+          </div>
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">
             准备开始新游戏
           </h2>
