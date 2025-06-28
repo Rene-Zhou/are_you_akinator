@@ -2,6 +2,8 @@
 
 一个基于AI的猜人物游戏，与传统的Akinator相反：AI预设一个知名人物，人类通过提问来猜测这个人物是谁。
 
+![Akinator](https://raw.githubusercontent.com/Rene-Zhou/are_you_akinator/refs/heads/master/img/akinaotr-t.png)
+
 ## 🎮 游戏规则
 
 - AI已经想好了一个网络知名人物（从人物列表中随机选择）
@@ -235,10 +237,6 @@ uv run isort .
 ## 📝 许可证
 
 MIT License
-
-## 🤝 贡献
-
-欢迎提交Issue和Pull Request！
 
 ---
 

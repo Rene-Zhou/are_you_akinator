@@ -52,9 +52,9 @@ const GameBoard = () => {
         <div className="text-center">
           <div className="mb-6 flex justify-center">
             <img 
-              src="/img/akinaotr-t.png" 
+              src="https://raw.githubusercontent.com/Rene-Zhou/are_you_akinator/refs/heads/master/img/akinaotr-t.png" 
               alt="Akinator" 
-              className="w-24 h-24 object-contain"
+              className="w-96 h-96 object-contain"
             />
           </div>
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">
