@@ -14,3 +14,7 @@ wheels/
 
 # claude
 .claude/
+
+# docs
+DEVELOPMENT.md
+PROJECT_STATUS.md
