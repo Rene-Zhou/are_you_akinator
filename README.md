@@ -68,25 +68,58 @@ Your Custom Person
 ```bash
 uv run python main.py
 ```
+选择：
+- **选项1**：启动CLI游戏（命令行界面）
+- **选项2**：启动后端服务器
+- **选项3**：启动React前端界面（现代Web界面）🆕
 
 #### 方式二：分别启动
+
+**CLI游戏:**
 ```bash
-# 启动后端服务器
+# 1. 启动后端服务器
 uv run python run_backend.py
 
-# 在另一个终端启动CLI客户端
+# 2. 在另一个终端启动CLI客户端
 uv run python start_cli.py
 ```
 
-## 🎯 游戏命令
+**Web界面游戏:**
+```bash
+# 1. 启动后端服务器
+uv run python run_backend.py
 
-在CLI界面中，你可以使用以下方式：
+# 2. 在另一个终端启动前端
+uv run python start_frontend.py
+```
+
+**注意**：
+- 首次启动前端需要安装Node.js和npm
+- Web前端将在 http://localhost:3000 启动
+- 支持移动端和桌面端浏览器
+- 提供现代化的用户界面和交互体验
+
+## 🎯 游戏界面
+
+### CLI界面命令
+在命令行界面中，你可以使用以下方式：
 
 - **直接提问**：`这个人是男性吗？`
 - **直接猜测**：`是爱因斯坦吗？`
 - **查看历史**：`history`
 - **获取帮助**：`help`
 - **退出游戏**：`quit`
+
+### Web界面特性 🆕
+在React Web界面中，你可以享受：
+
+- **🎨 现代化UI**：精美的界面设计和动画效果
+- **📱 响应式设计**：完美适配手机、平板、桌面端
+- **⚡ 实时交互**：即时显示AI回答和游戏状态
+- **📝 问答历史**：自动记录所有问答对话
+- **🎉 胜利庆祝**：游戏胜利时的庆祝动画和统计
+- **🔄 连接监控**：实时显示后端连接状态
+- **🛡️ 错误处理**：友好的错误提示和恢复机制
 
 ## 🔧 技术架构
 
@@ -97,10 +130,17 @@ uv run python start_cli.py
 - **游戏管理**：会话状态管理
 - **REST API**：提供游戏接口
 
-### 前端 (CLI)
+### 前端
+#### CLI界面 (Python)
 - **交互界面**：Python Prompt Toolkit + Rich
 - **游戏流程**：问答历史记录、命令处理
 - **API客户端**：与后端通信
+
+#### Web界面 (React)
+- **现代化UI**：React + Tailwind CSS
+- **响应式设计**：支持移动端和桌面端
+- **实时交互**：游戏状态管理和动画效果
+- **完整功能**：问答历史、胜利界面、统计信息
 
 ## 📚 API文档
 
@@ -157,9 +197,18 @@ are_you_akinator/
 │       ├── config/    # 配置管理
 │       └── utils/     # 工具函数
 ├── cli/               # CLI客户端
+├── frontend/          # React前端
+│   ├── src/
+│   │   ├── components/ # React组件
+│   │   ├── hooks/     # 自定义Hooks
+│   │   ├── services/  # API服务
+│   │   └── styles/    # 样式文件
+│   ├── package.json   # 前端依赖
+│   └── vite.config.js # Vite配置
 ├── famous_people.txt  # 人物列表文件
 ├── main.py            # 主入口
-└── run_backend.py     # 后端启动脚本
+├── run_backend.py     # 后端启动脚本
+└── start_frontend.py  # 前端启动脚本
 ```
 
 ### 人物管理

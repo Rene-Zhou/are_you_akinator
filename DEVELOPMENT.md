@@ -21,17 +21,19 @@ FastAPI Backend
 
 ### 前端架构
 ```
-阶段1：CLI界面（Python Prompt Toolkit）
+阶段1：CLI界面（Python Prompt Toolkit）✅
 ├── 命令行交互界面
 ├── 游戏流程控制
 ├── API客户端
 └── 用户输入处理
 
-阶段2：Web界面（React - 未来实现）
-├── 现代化UI组件
-├── 实时交互
-├── 游戏历史记录
-└── 响应式设计
+阶段2：Web界面（React）✅
+├── 现代化UI组件 - React + Tailwind CSS
+├── 实时交互 - 游戏状态管理和动画
+├── 游戏历史记录 - 问答历史展示
+├── 响应式设计 - 移动端和桌面端适配
+├── 错误处理 - 连接状态监控和错误边界
+└── 用户体验 - 加载动画和友好提示
 ```
 
 ## 技术栈选择
@@ -48,11 +50,25 @@ FastAPI Backend
 - **环境管理**: python-dotenv
 - **HTTP客户端**: httpx
 
-### 前端技术栈（CLI阶段）
+### 前端技术栈
+#### CLI界面
 - **CLI框架**: Python Prompt Toolkit
   - 原因：丰富的交互功能、自动补全、历史记录
 - **HTTP客户端**: httpx
 - **配置管理**: python-dotenv
+
+#### Web界面（React）
+- **前端框架**: React 18
+  - 原因：组件化开发、生态丰富、社区活跃
+- **构建工具**: Vite 5
+  - 原因：快速开发服务器、热重载、优化构建
+- **样式框架**: Tailwind CSS 3.4
+  - 原因：原子化CSS、响应式设计、自定义主题
+- **HTTP客户端**: Axios
+  - 原因：拦截器支持、错误处理、请求配置
+- **状态管理**: React Hooks (useState, useEffect, custom hooks)
+  - 原因：轻量级、符合React最佳实践
+- **开发工具**: ESLint + PostCSS + Autoprefixer
 
 ### 数据存储
 - **会话存储**: 内存存储（Redis可选，用于扩展）
@@ -90,15 +106,46 @@ are_you_akinator/
 │   ├── client.py                # API客户端
 │   ├── ui.py                    # 用户界面
 │   └── config.py                # CLI配置
+├── frontend/                    # React前端
+│   ├── src/
+│   │   ├── components/          # React组件
+│   │   │   ├── GameBoard.jsx    # 主游戏界面
+│   │   │   ├── QuestionInput.jsx # 问题输入组件
+│   │   │   ├── AnswerDisplay.jsx # 答案显示组件
+│   │   │   ├── QuestionHistory.jsx # 问答历史
+│   │   │   ├── WinScreen.jsx    # 胜利界面
+│   │   │   ├── ConnectionStatus.jsx # 连接状态
+│   │   │   ├── ErrorBoundary.jsx # 错误边界
+│   │   │   └── Loading.jsx      # 加载组件
+│   │   ├── hooks/               # 自定义Hooks
+│   │   │   └── useGame.js       # 游戏状态管理Hook
+│   │   ├── services/            # API服务
+│   │   │   └── api.js           # 后端API接口
+│   │   ├── styles/              # 样式文件
+│   │   │   └── index.css        # 主样式和Tailwind配置
+│   │   ├── App.jsx              # 主应用组件
+│   │   └── main.jsx             # 应用入口点
+│   ├── public/                  # 静态资源
+│   ├── index.html               # HTML模板
+│   ├── package.json             # 前端依赖
+│   ├── vite.config.js           # Vite配置
+│   ├── tailwind.config.js       # Tailwind CSS配置
+│   ├── postcss.config.js        # PostCSS配置
+│   ├── .eslintrc.cjs            # ESLint配置
+│   ├── .gitignore               # Git忽略文件
+│   ├── .env.example             # 前端环境变量示例
+│   └── README.md                # 前端文档
 ├── famous_people.txt            # 人物列表文件
 ├── .env.example                 # 环境变量示例
 ├── .env                         # 环境变量（不提交）
 ├── main.py                      # 主入口程序
 ├── run_backend.py               # 后端启动脚本
 ├── start_cli.py                 # CLI启动脚本
+├── start_frontend.py            # 前端启动脚本
 ├── pyproject.toml               # 项目配置
 ├── README.md                    # 项目说明
-└── DEVELOPMENT.md               # 开发文档
+├── DEVELOPMENT.md               # 开发文档
+└── TESTING_GUIDE.md             # 测试指南
 ```
 
 ## 核心功能设计
@@ -211,12 +258,22 @@ CACHE_DURATION=3600    # 缓存时间（秒）
 3. 错误处理完善
 4. 移除冗余功能
 
-### 阶段4：扩展功能（可选）
+### 阶段4：Web界面开发 ✅
+1. React + Vite 项目搭建
+2. Tailwind CSS 响应式设计
+3. 游戏组件开发 (GameBoard, QuestionInput, AnswerDisplay等)
+4. 状态管理和API集成
+5. 错误处理和用户体验优化
+6. 连接状态监控和加载动画
+7. 移动端适配和触摸友好交互
+
+### 阶段5：扩展功能（可选）
 1. 多语言支持
 2. 难度级别设置
 3. 人物类别筛选
-4. Web界面开发
-5. 单元测试编写
+4. 单元测试编写
+5. Docker容器化部署
+6. 数据库集成和用户系统
 
 ## 技术决策说明
 
@@ -237,6 +294,25 @@ CACHE_DURATION=3600    # 缓存时间（秒）
 - 降低开发复杂度
 - 便于调试和测试
 - 为Web版本奠定基础
+
+### 为什么选择React + Tailwind CSS？
+**React选择原因：**
+- 组件化开发，代码复用性强
+- 丰富的生态系统和社区支持
+- 优秀的开发工具和调试体验
+- React Hooks 提供简洁的状态管理
+
+**Tailwind CSS选择原因：**
+- 原子化CSS，快速开发
+- 内置响应式设计系统
+- 可定制的设计系统
+- 优秀的性能和构建优化
+
+**Vite选择原因：**
+- 极快的开发服务器启动
+- 热模块替换 (HMR) 性能优秀
+- 内置 TypeScript/JSX 支持
+- 现代化的构建工具
 
 ## 风险评估与缓解
 

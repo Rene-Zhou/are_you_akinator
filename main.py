@@ -10,7 +10,8 @@ def show_menu():
     print("=" * 40)
     print("1. 启动游戏 (CLI)")
     print("2. 启动后端服务器")
-    print("3. 退出")
+    print("3. 启动前端界面 (React)")
+    print("4. 退出")
     print("=" * 40)
 
 
@@ -18,7 +19,7 @@ async def main():
     """主函数"""
     while True:
         show_menu()
-        choice = input("请选择 (1-3): ").strip()
+        choice = input("请选择 (1-4): ").strip()
         
         if choice == "1":
             print("\n🎮 启动CLI游戏...")
@@ -28,6 +29,10 @@ async def main():
             import subprocess
             subprocess.run([sys.executable, "run_backend.py"])
         elif choice == "3":
+            print("\n🌐 启动前端界面...")
+            import subprocess
+            subprocess.run([sys.executable, "start_frontend.py"])
+        elif choice == "4":
             print("\n👋 再见！")
             break
         else:
