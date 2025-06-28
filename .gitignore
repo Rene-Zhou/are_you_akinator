@@ -16,5 +16,4 @@ wheels/
 .claude/
 
 # docs
-DEVELOPMENT.md
-PROJECT_STATUS.md
+docs/
