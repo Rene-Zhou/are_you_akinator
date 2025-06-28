@@ -1,14 +1,37 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Loading from './Loading';
 
 const QuestionInput = ({ onSubmit, isLoading, disabled }) => {
   const [question, setQuestion] = useState('');
+  const textareaRef = useRef(null);
+
+  // Auto-focus the input when component mounts or becomes enabled
+  useEffect(() => {
+    if (!disabled && !isLoading && textareaRef.current) {
+      // Use a small delay to ensure the component is fully rendered
+      const timeoutId = setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 50);
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [disabled, isLoading]); // Re-focus when loading ends or component is enabled
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (question.trim() && !isLoading && !disabled) {
-      onSubmit(question.trim());
-      setQuestion('');
+      const questionText = question.trim();
+      setQuestion(''); // Clear immediately for better UX
+      onSubmit(questionText);
+      
+      // Re-focus the input after a brief delay to ensure state updates are processed
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (textareaRef.current && !disabled && !isLoading) {
+            textareaRef.current.focus();
+          }
+        }, 150);
+      });
     }
   };
 
@@ -24,6 +47,7 @@ const QuestionInput = ({ onSubmit, isLoading, disabled }) => {
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
         <div className="flex-1">
           <textarea
+            ref={textareaRef}
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyPress={handleKeyPress}

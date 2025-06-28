@@ -1,6 +1,22 @@
+import { useEffect, useRef } from 'react';
 import AnswerDisplay from './AnswerDisplay';
 
 const QuestionHistory = ({ questions }) => {
+  const scrollContainerRef = useRef(null);
+
+  // Auto-scroll to bottom when new messages are added
+  useEffect(() => {
+    if (scrollContainerRef.current && questions.length > 0) {
+      const scrollContainer = scrollContainerRef.current;
+      
+      // Use requestAnimationFrame to ensure DOM is updated before scrolling
+      requestAnimationFrame(() => {
+        // Use scrollTop = scrollHeight for reliable scrolling to bottom
+        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+      });
+    }
+  }, [questions.length]); // Only trigger when the number of questions changes
+
   if (!questions || questions.length === 0) {
     return (
       <div className="text-center py-12">
@@ -22,7 +38,10 @@ const QuestionHistory = ({ questions }) => {
         </div>
       </div>
       
-      <div className="space-y-4 max-h-96 overflow-y-auto">
+      <div 
+        ref={scrollContainerRef} 
+        className="space-y-4 max-h-96 overflow-y-auto scroll-smooth"
+      >
         {questions.map((qa, index) => (
           <AnswerDisplay
             key={index}
