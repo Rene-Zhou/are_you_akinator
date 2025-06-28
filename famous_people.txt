@@ -1,0 +1,58 @@
+# 知名人物列表 - 每行一个人物姓名
+# 科学家
+Albert Einstein
+Stephen Hawking
+Marie Curie
+Isaac Newton
+Charles Darwin
+Nikola Tesla
+Galileo Galilei
+
+# 科技企业家
+Steve Jobs
+Bill Gates
+Elon Musk
+Mark Zuckerberg
+Jeff Bezos
+Larry Page
+Sergey Brin
+Jack Ma
+
+# 艺术家/音乐家
+Leonardo da Vinci
+Pablo Picasso
+Vincent van Gogh
+Michelangelo
+Andy Warhol
+Frida Kahlo
+Mozart
+Beethoven
+Michael Jackson
+Elvis Presley
+Taylor Swift
+Lady Gaga
+
+# 作家
+Shakespeare
+Mark Twain
+J.K. Rowling
+Stephen King
+Ernest Hemingway
+Jane Austen
+George Orwell
+Agatha Christie
+
+# 历史人物
+Napoleon Bonaparte
+Alexander the Great
+Julius Caesar
+Cleopatra
+Winston Churchill
+Abraham Lincoln
+
+# 哲学家/思想家
+Socrates
+Plato
+Aristotle
+Confucius
+Karl Marx
